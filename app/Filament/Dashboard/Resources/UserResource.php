@@ -41,7 +41,7 @@ class UserResource extends Resource
                         ->maxLength(255),
                     Forms\Components\TextInput::make('email')
                         ->email()
-                        ->disabledOn('edit')
+                       // ->disabledOn('edit')
                         ->required()
                         ->maxLength(255),
                     Forms\Components\DateTimePicker::make('email_verified_at'),
@@ -89,7 +89,11 @@ class UserResource extends Resource
                         ->required(),
                     Forms\Components\TextInput::make('postal_code')
                         ->required(),
-
+                    Forms\Components\Select::make('roles')
+                        ->relationship('roles', 'name')
+                        ->multiple()
+                        ->preload()
+                        ->searchable(),
                 ])                         
 
             ]);

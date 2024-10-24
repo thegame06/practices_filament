@@ -20,9 +20,20 @@ class HolidayResource extends Resource
 {
     protected static ?string $model = Holiday::class;
     protected static ?string $navigationGroup = 'Employees Management';
-    protected static ?string $navigationLabel = 'LazyDays';
+    protected static ?string $navigationLabel = 'Holiday';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    public static function getPermissionPrefixes(): array
+    {
+        return [
+            'view',
+            'view_any',
+            'create',
+            'update',
+            'delete',
+            'delete_any',
+        ];
+    }    
     public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()->where('user_id', Auth::user()->id);
