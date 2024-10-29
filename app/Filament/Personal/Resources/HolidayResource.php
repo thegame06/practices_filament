@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Auth;
 class HolidayResource extends Resource
 {
     protected static ?string $model = Holiday::class;
-    protected static ?string $navigationGroup = 'Employees Management';
     protected static ?string $navigationLabel = 'Holiday';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';

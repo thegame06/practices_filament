@@ -18,6 +18,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Shanerbaner82\PanelRoles\PanelRoles;
 
 class DashboardPanelProvider extends PanelProvider
 {
@@ -57,7 +58,10 @@ class DashboardPanelProvider extends PanelProvider
                 Authenticate::class,
             ])
             ->plugins([
-                FilamentShieldPlugin::make()
+                FilamentShieldPlugin::make(),
+                PanelRoles::make()
+                ->roleToAssign('super-admin')
+                ->restrictedRoles(['super_admin'])
             ]);            
     }
 }
